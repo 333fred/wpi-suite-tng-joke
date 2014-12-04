@@ -57,7 +57,8 @@ public class Main implements IJanewayModule {
 	private final JProgressBar progressBar = new JProgressBar();
 	private final JButton trelloBtn = new JButton("Trello");
 	private final JButton jiraBtn = new JButton("Jira");
-
+	private final JButton vsoBtn = new JButton("Visual Studio Online");
+	
 	/**
 	 * Constructs the main views for this module. Namely one tab, containing a
 	 * toolbar and a main content panel.
@@ -115,12 +116,16 @@ public class Main implements IJanewayModule {
 		toolbar.add(progressBar, BorderLayout.SOUTH);
 		buttonPanel.add(trelloBtn);
 		buttonPanel.add(jiraBtn);
+		buttonPanel.add(vsoBtn);
 
 		trelloBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("http://trello.com")));
 
 		jiraBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("https://jira.atlassian.com/secure/Dashboard.jspa")));
+
+		vsoBtn.addActionListener((action) -> Platform.runLater(() -> engine
+				.load("https://fsilberberg.visualstudio.com/")));
 
 		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
