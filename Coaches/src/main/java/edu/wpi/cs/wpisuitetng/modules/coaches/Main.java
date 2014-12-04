@@ -122,7 +122,7 @@ public class Main implements IJanewayModule {
 		jiraBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("https://jira.atlassian.com/secure/Dashboard.jspa")));
 
-		tab1 = new JanewayTabModel("Coaches", null, toolbar, panel);
+		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
 		// Add the tab to the list of tabs owned by this module
 		this.tabs.add(tab1);
