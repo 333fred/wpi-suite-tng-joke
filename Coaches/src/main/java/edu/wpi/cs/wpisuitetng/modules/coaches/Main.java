@@ -68,6 +68,7 @@ public class Main implements IJanewayModule {
         Platform.runLater(() -> {
         	view = new WebView();
         	engine = view.getEngine();
+        	engine.setUserAgent("Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36");
         	engine.load("http://trello.com");
         	mainPanel.setScene(new Scene(view));
         });
