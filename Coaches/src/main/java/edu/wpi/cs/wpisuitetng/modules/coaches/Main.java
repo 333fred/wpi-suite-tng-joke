@@ -58,7 +58,8 @@ public class Main implements IJanewayModule {
 	private final JButton trelloBtn = new JButton("Trello");
 	private final JButton jiraBtn = new JButton("Jira");
 	private final JButton vsoBtn = new JButton("Visual Studio Online");
-	
+	private final JButton fcBtn = new JButton("Freedcamp");
+
 	/**
 	 * Constructs the main views for this module. Namely one tab, containing a
 	 * toolbar and a main content panel.
@@ -117,6 +118,7 @@ public class Main implements IJanewayModule {
 		buttonPanel.add(trelloBtn);
 		buttonPanel.add(jiraBtn);
 		buttonPanel.add(vsoBtn);
+		buttonPanel.add(fcBtn);
 
 		trelloBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("http://trello.com")));
@@ -126,6 +128,9 @@ public class Main implements IJanewayModule {
 
 		vsoBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("https://fsilberberg.visualstudio.com/")));
+
+		fcBtn.addActionListener((action) -> Platform.runLater(() -> engine
+				.load("https://freedcamp.com/")));
 
 		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
