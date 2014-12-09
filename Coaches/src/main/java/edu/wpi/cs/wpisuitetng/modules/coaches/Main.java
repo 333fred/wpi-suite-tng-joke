@@ -60,6 +60,7 @@ public class Main implements IJanewayModule {
 	private final JButton vsoBtn = new JButton("Visual Studio Online");
 	private final JButton fcBtn = new JButton("Freedcamp");
 	private final JButton gdBtn = new JButton("Google Drive");
+	private final JButton paycheckBtn = new JButton("Paycheck");
 
 	/**
 	 * Constructs the main views for this module. Namely one tab, containing a
@@ -121,6 +122,7 @@ public class Main implements IJanewayModule {
 		buttonPanel.add(vsoBtn);
 		buttonPanel.add(fcBtn);
 		buttonPanel.add(gdBtn);
+		buttonPanel.add(paycheckBtn);
 
 		trelloBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("http://trello.com")));
@@ -136,6 +138,9 @@ public class Main implements IJanewayModule {
 
 		gdBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("https://drive.google.com/drive/#folders/0B61x-pCgzYaaeGNtTTNORFlCTHc/0B0f75QqLd9z9dUhuZ01TcS1nd2s")));
+
+		paycheckBtn.addActionListener((action) -> Platform.runLater(() -> engine
+				.load("http://randomish.org")));
 
 		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
