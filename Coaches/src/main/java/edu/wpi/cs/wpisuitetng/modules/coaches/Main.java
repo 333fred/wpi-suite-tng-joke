@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 -- WPI Suite
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * Contributors:
- * Chris Casola
- ******************************************************************************/
-
 package edu.wpi.cs.wpisuitetng.modules.coaches;
 
 import java.awt.BorderLayout;
@@ -33,19 +23,10 @@ import javax.swing.SwingUtilities;
 import edu.wpi.cs.wpisuitetng.janeway.modules.IJanewayModule;
 import edu.wpi.cs.wpisuitetng.janeway.modules.JanewayTabModel;
 
-/**
- * @author 333fr_000
- */
 public class Main implements IJanewayModule {
 
-	/**
-	 * A list of tabs owned by this module
-	 */
 	List<JanewayTabModel> tabs;
 
-	/**
-	 * Variables, used for tests
-	 */
 	JanewayTabModel tab1;
 
 	private final JFXPanel mainPanel = new JFXPanel();
@@ -62,13 +43,8 @@ public class Main implements IJanewayModule {
 	private final JButton gdBtn = new JButton("Google Drive");
 	private final JButton paycheckBtn = new JButton("Paycheck");
 
-	/**
-	 * Constructs the main views for this module. Namely one tab, containing a
-	 * toolbar and a main content panel.
-	 */
 	public Main() {
 
-		// Initialize the list of tabs (however, this module has only one tab)
 		this.tabs = new ArrayList<JanewayTabModel>();
 
 		panel = new JPanel(new BorderLayout());
@@ -80,7 +56,6 @@ public class Main implements IJanewayModule {
 			engine.load("http://trello.com");
 			mainPanel.setScene(new Scene(view));
 
-			// The progress bar
 			engine.getLoadWorker()
 					.workDoneProperty()
 					.addListener(
@@ -89,7 +64,6 @@ public class Main implements IJanewayModule {
 										.setValue(newValue.intValue()));
 							});
 
-			// If an error occurs
 			engine.getLoadWorker()
 					.exceptionProperty()
 					.addListener(
@@ -144,21 +118,14 @@ public class Main implements IJanewayModule {
 
 		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
-		// Add the tab to the list of tabs owned by this module
 		this.tabs.add(tab1);
 	}
 
-	/*
-	 * @see edu.wpi.cs.wpisuitetng.janeway.modules.IJanewayModule#getName()
-	 */
 	@Override
 	public String getName() {
 		return "Coaches";
 	}
 
-	/*
-	 * @see edu.wpi.cs.wpisuitetng.janeway.modules.IJanewayModule#getTabs()
-	 */
 	@Override
 	public List<JanewayTabModel> getTabs() {
 		return tabs;
