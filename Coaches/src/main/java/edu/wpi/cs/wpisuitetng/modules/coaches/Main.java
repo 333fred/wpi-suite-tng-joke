@@ -1,7 +1,11 @@
 package edu.wpi.cs.wpisuitetng.modules.coaches;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +17,6 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -42,6 +44,7 @@ public class Main implements IJanewayModule {
 	private final JButton fcBtn = new JButton("Freedcamp");
 	private final JButton gdBtn = new JButton("Google Drive");
 	private final JButton paycheckBtn = new JButton("Paycheck");
+	private final JButton distractBtn = new JButton("Distraction");
 
 	public Main() {
 
@@ -97,6 +100,7 @@ public class Main implements IJanewayModule {
 		buttonPanel.add(fcBtn);
 		buttonPanel.add(gdBtn);
 		buttonPanel.add(paycheckBtn);
+		buttonPanel.add(distractBtn);
 
 		trelloBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("http://trello.com")));
@@ -113,8 +117,19 @@ public class Main implements IJanewayModule {
 		gdBtn.addActionListener((action) -> Platform.runLater(() -> engine
 				.load("https://drive.google.com/drive/#folders/0B61x-pCgzYaaeGNtTTNORFlCTHc/0B0f75QqLd9z9dUhuZ01TcS1nd2s")));
 
-		paycheckBtn.addActionListener((action) -> Platform.runLater(() -> engine
-				.load("http://randomish.org")));
+		paycheckBtn.addActionListener((action) -> Platform
+				.runLater(() -> engine.load("http://randomish.org")));
+
+		distractBtn.addActionListener((action) -> {
+			try {
+				Process proc = Runtime.getRuntime().exec(
+						"java -jar " + System.getProperty("user.home")
+								+ File.separator + "Minecraft.jar");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 
 		tab1 = new JanewayTabModel("Coaches Task Manager", null, toolbar, panel);
 
